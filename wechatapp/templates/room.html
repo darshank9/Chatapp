@@ -13,6 +13,7 @@
         <div class="col-12">
             <div class="alert alert-info d-flex justify-content-between" role="alert">
               <h5>ROOM :- {{room_name}}</h5>
+              
             </div>
             <form>
                 <div class="form-group">
@@ -60,9 +61,7 @@ const chatbox = document.querySelector("#chatbox");
 
  
     const roomName= JSON.parse(document.getElementById('room_slug').textContent);
-    const protocol = window.location.protocol === "https:" ? "wss://" : "ws://";
-    const chatSocket = new WebSocket(protocol + window.location.host + "/ws/" + roomName + "/");
-
+    const chatSocket = new WebSocket("ws://" + window.location.host + "/ws/"+ roomName +"/");
     // const chatSocket = new WebSocket("ws://127.0.0.1:8000/ws/"+ roomName +"/");
     // alert(chatSocket);
     chatSocket.onopen = function (e) {
@@ -129,10 +128,4 @@ const chatbox = document.querySelector("#chatbox");
 {% endif %}
 
 <br/>
-
-    
-
-
-
-
 {% endblock %}
